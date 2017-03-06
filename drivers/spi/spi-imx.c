@@ -1220,7 +1220,11 @@ static int spi_imx_sdma_init(struct device *dev, struct spi_imx_data *spi_imx,
 	if (of_machine_is_compatible("fsl,imx6dl"))
 		return 0;
 
-	spi_imx->wml = spi_imx->devtype_data->fifo_size / 2;
+	/* use pio mode for i.mx50 chip */
+	if (of_machine_is_compatible("fsl,imx50"))
+		return 0;
+
+	spi_imx->wml = spi_imx_get_fifosize(spi_imx) / 2;
 
 	/* Prepare for TX DMA: */
 	master->dma_tx = dma_request_slave_channel_reason(dev, "tx");
