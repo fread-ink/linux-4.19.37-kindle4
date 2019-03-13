@@ -65,7 +65,24 @@
 				MX50_PAD_UART1_CTS__GPIO6_8		0x1c4
 			>;
 		};
+
+		pinctrl_sdhc1: sdhc1grp {
+			fsl,pins = <
+				MX50_PAD_SD1_CMD__ESDHC1_CMD		0x400020d5
+				MX50_PAD_SD1_CLK__ESDHC1_CLK		0x20d5
+				MX50_PAD_SD1_D0__ESDHC1_DAT0		0x20d5
+				MX50_PAD_SD1_D1__ESDHC1_DAT1		0x20d5
+				MX50_PAD_SD1_D2__ESDHC1_DAT2		0x20d5
+				MX50_PAD_SD1_D3__ESDHC1_DAT3		0x20d5
+			>;
+		};
 	};
+};
+
+&sdhc1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_sdhc1>;
+	status = "okay";
 };
 
 &uart1 {
