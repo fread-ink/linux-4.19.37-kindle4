@@ -79,7 +79,7 @@
 	};
 };
 
-&sdhc1 {
+&esdhc1 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_sdhc1>;
 	status = "okay";
